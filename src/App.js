@@ -84,6 +84,28 @@ class S3ImageUpload extends React.Component {
             }
         );
 
+        // const NewPhoto = `mutation NewPhoto($createPhotoInput: CreatePhotoInput) {
+        //     createPhoto(input: $createPhotoInput) {
+        //         id
+        //      }
+        //  }`;
+        //
+        // const PhotoS3InfoInput = {
+        //     key: fileName,
+        //     width: 50,
+        //     height: 50
+        // };
+        //
+        // const CreatePhotoInput = {
+        //     bucket: "coolbucket-master",
+        //     fullsize: PhotoS3InfoInput,
+        //     thumbnail: PhotoS3InfoInput
+        // }
+        //
+        // const dbPhoto = await API.graphql(graphqlOperation(NewPhoto, CreatePhotoInput));
+        // console.log(dbPhoto);
+
+        console.log('Dab');
         console.log('Uploaded file: ', result);
     }
 
