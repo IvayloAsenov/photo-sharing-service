@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Header } from 'semantic-ui-react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Amplify from 'aws-amplify';
+import aws_exports from './aws-exports';
+import {  withAuthenticator } from 'aws-amplify-react';
+Amplify.configure(aws_exports);
+
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Header as='h1'>Hello World!</Header>
+            </div>
+        );
+    }
 }
 
-export default App;
+const signUpConfig = {
+    hideAllDefaults: true,
+    signUpFields: [
+        {
+            label: 'Email',
+            key: 'username',
+            required: true,
+            placeholder: 'Email',
+            type: 'email',
+            displayOrder: 1,
+        },
+        {
+            label: 'Name',
+            key: 'name',
+            required: true,
+            placeholder: 'Full name',
+            type: 'name',
+            displayOrder: 2
+        },
+        {
+            label: 'Password',
+            key: 'password',
+            required: true,
+            placeholder: 'Password',
+            type: 'password',
+            displayOrder: 3,
+        }
+    ],
+}
+
+export default withAuthenticator(App, {signUpConfig});
